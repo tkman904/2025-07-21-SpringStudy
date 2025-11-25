@@ -13,7 +13,6 @@ import com.sist.vo.RecipeVO;
 public class RecipeDAO {
 	@Autowired
 	private RecipeMapper mapper;
-	
 	/*
 	  	@Select("SELECT no, title, chef "
 				+ "FROM recipe "
