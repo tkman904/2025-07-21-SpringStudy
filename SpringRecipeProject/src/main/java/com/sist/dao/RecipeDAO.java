@@ -22,7 +22,7 @@ public class RecipeDAO {
 		@Select("SELECT COUNT(*) "
 				+ "FROM recipe "
 				+ "WHERE ${column} LIKE '%'||#{ss}||'%'")
-		public int recipeFindCount(Map map);
+		public int recipeFindCount(Map map);   
 	 */
 	public List<RecipeVO> recipeFindData(Map map) {
 		return mapper.recipeFindData(map);
