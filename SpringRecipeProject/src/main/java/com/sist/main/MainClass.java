@@ -31,5 +31,6 @@ public class MainClass {
 		for(RecipeVO vo : list) {
 			System.out.println(vo.getTitle() + " " + vo.getChef());
 		}
+		
 	}
 }
