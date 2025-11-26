@@ -72,5 +72,6 @@ public class MainController {
 	public String main_main(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("msg", "Hello Spring!!");
 		return "main/main";
+		
 	}
 }
