@@ -31,5 +31,6 @@ public class MainClass {
 		for(FoodVO vo : list) {
 			System.out.println(vo.getName() + " " + vo.getType());
 		}
+		
 	}
 }
