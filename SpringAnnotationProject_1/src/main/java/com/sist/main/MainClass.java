@@ -17,6 +17,5 @@ public class MainClass {
 		dao.insert();
 		System.out.println("=======");
 		dao.update();
-		
 	}
 }

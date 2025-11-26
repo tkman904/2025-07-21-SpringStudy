@@ -61,7 +61,6 @@ public class MainClass {
 		System.out.println("직위: " + vo.getJob());
 		System.out.println("부서명: " + vo.getDvo().getDname());
 		System.out.println("근무지: " + vo.getDvo().getLoc());
-		
 	}
 
 }
