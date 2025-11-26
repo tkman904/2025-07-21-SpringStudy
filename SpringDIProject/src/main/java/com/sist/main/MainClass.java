@@ -106,6 +106,7 @@ public class MainClass {
 		
 		Sawon sa4 = new Sawon();
 		sa4.print();
+		
 	}
 
 }

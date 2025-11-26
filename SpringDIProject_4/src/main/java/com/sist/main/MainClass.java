@@ -29,5 +29,6 @@ public class MainClass {
 		System.out.println("이름:" + std.getName());
 		System.out.println("성별:" + std.getSex());
 		System.out.println("학과:" + std.getSubject());
+		
 	}
 }

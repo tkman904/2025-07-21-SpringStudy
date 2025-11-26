@@ -33,6 +33,7 @@ public class MainClass {
 		System.out.println("번호:" + sa.getSabun());
 		System.out.println("이름:" + sa.getName());
 		System.out.println("성별:" + sa.getSex());
+		
 	}
 
 }
