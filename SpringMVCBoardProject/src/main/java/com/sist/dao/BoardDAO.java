@@ -2,6 +2,9 @@ package com.sist.dao;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,7 +31,6 @@ public class BoardDAO {
 				+ "VALUES(sb_no_seq.nextval, #{name}, #{subject}, #{content}, #{pwd})")
 		public void boardInsert(BoardVO vo);
 	 */
-	
 	public List<BoardVO> boardListData(int start, int end) {
 		return mapper.boardListData(start, end);
 	}
@@ -39,5 +41,58 @@ public class BoardDAO {
 	
 	public void boardInsert(BoardVO vo) {
 		mapper.boardInsert(vo);
+	}
+	
+	/*
+	   	@Update("UPDATE springBoard SET "
+				+ "hit = hit+1 "
+				+ "WHERE no = #{no}")
+		public int boardHitIncrement(int no);
+		
+		@Select("SELECT no, subject, name, content, TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:SS') AS dbday, hit "
+				+ "FROM springBoard "
+				+ "WHERE no = #{no}")
+		public BoardVO boardDetail(int no);
+	 */
+	public BoardVO boardDetail(int no) {
+		mapper.hitIncrement(no);
+		return mapper.boardDetail(no);
+	}
+	
+	/*
+	   	@Select("SELECT pwd FROM springBoard WHERE no = #{no}")
+		public String boardGetPassword(int no);
+		
+		@Delete("DELETE FROM springBoard WHERE no = #{no}")
+		public void boardDelete(int no);
+	 */
+	public String boardDelete(int no, String pwd) {
+		String db_pwd = mapper.boardGetPassword(no);
+		String res = "no";
+		if(db_pwd.equals(pwd)) {
+			res = "yes";
+			mapper.boardDelete(no);
+		}
+		return res;
+	}
+	
+	public BoardVO boardUpdateData(int no) {
+		return mapper.boardDetail(no);
+	}
+	
+	/*
+	   	@Update("UPDATE springBoard SET "
+				+ "name = #{name}, subject = #{subject}, content = #{content} "
+				+ "WHERE no = #{no}")
+		public void boardUpdate(BoardVO vo);
+	 */
+	public boolean boardUpdate(BoardVO vo) {
+		boolean res = false;
+		String db_pwd = mapper.boardGetPassword(vo.getNo());
+		if(db_pwd.equals(vo.getPwd())) {
+			res = true;
+			mapper.boardUpdate(vo);
+		}
+		return res;
 	}
 }

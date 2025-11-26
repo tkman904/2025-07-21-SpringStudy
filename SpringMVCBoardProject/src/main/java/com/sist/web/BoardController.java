@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sist.dao.*;
@@ -38,4 +39,33 @@ public class BoardController {
 		
 		return "board/list";
 	}
+	
+	@GetMapping("insert.do")
+	public String board_insert() {
+		return "board/insert";
+	}
+	
+	@PostMapping("insert_ok.do")
+	public String board_insert_ok(BoardVO vo) {
+		dao.boardInsert(vo);
+		return "redirect:list.do";
+	}
+	
+	@GetMapping("detail.do")
+	public String board_detail(int no, Model model) {
+		BoardVO vo = dao.boardDetail(no);
+		model.addAttribute("vo", vo);
+		return "board/detail";
+	}
+	
+	// 수정
+	@GetMapping("update.do")
+	public String board_update(int no, Model model) {
+		BoardVO vo = dao.boardUpdateData(no);
+		model.addAttribute("vo", vo);
+		return "board/update";
+	}
+	
+	// 삭제
+	// RestBoardController 처리
 }
