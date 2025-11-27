@@ -1,7 +1,9 @@
 package com.sist.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +32,27 @@ public class FoodDAO {
 	
 	public int foodTotalPage() {
 		return mapper.foodTotalPage();
+	}
+	
+	/*
+	   	@Select("SELECT fno, name, type, poster, address, num "
+				+ "FROM (SELECT fno, name, type, poster, address, ROWNUM AS num "
+				+ "FROM (SELECT fno, name, type, poster, address "
+				+ "FROM menupan_food "
+				+ "WHERE address LIKE '%'||#{fd}||'%' "
+				+ "ORDER BY fno ASC)) "
+				+ "WHERE num BETWEEN #{start} AND #{end}")
+		public List<FoodVO> foodFindListData(Map map);
+		
+		@Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food "
+				+ "WHERE address LIKE '%'||#{fd}||'%'")
+		public int foodFindTotalPage(String fd);
+	 */
+	public List<FoodVO> foodFindListData(Map map) {
+		return mapper.foodFindListData(map);
+	}
+	
+	public int foodFindTotalPage(String fd) {
+		return mapper.foodFindTotalPage(fd);
 	}
 }
