@@ -63,7 +63,9 @@ public class FoodController {
 		final int BLOCK = 10;
 		int startPage = ((curpage-1)/BLOCK*BLOCK)+1;
 		int endPage = ((curpage-1)/BLOCK*BLOCK)+BLOCK;
-		
+		if(endPage>totalpage) {
+			endPage = totalpage;
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("curpage", curpage);
 		model.addAttribute("totalpage", totalpage);
