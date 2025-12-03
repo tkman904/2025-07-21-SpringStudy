@@ -12,4 +12,11 @@ public class GoodsController {
 		model.addAttribute("main_jsp", "../goods/list.jsp");
 		return "main/main";
 	}
+	
+	@GetMapping("goods/detail.do")
+	public String goods_detail(int no, Model model) {
+		model.addAttribute("no", no);
+		model.addAttribute("main_jsp", "../goods/detail.jsp");
+		return "main/main";
+	}
 }
