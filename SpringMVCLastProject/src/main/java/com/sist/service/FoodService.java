@@ -11,10 +11,10 @@ import com.sist.vo.*;
  */
 
 public interface FoodService {
-	public List<FoodVO> FoodListData(int start, int end);
+	public List<FoodVO> foodListData(int start, int end);
 	public int foodTotalPage();
 	public FoodVO foodDetailData(int fno);
 	public FoodVO foodCookieData(int fno);
-	public List<FoodVO> FoodFindData(Map map);
+	public List<FoodVO> foodFindData(Map map);
 	public int foodFindTotalPage(String address);
 }

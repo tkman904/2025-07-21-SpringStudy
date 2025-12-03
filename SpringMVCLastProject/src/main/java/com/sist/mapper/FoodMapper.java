@@ -14,7 +14,7 @@ public interface FoodMapper {
 			+ "FROM (SELECT fno, name, poster "
 			+ "FROM menupan_food ORDER BY fno ASC)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
-	public List<FoodVO> FoodListData(@Param("start") int start, @Param("end") int end);
+	public List<FoodVO> foodListData(@Param("start") int start, @Param("end") int end);
 	
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food")
 	public int foodTotalPage();
@@ -38,7 +38,7 @@ public interface FoodMapper {
 			+ "WHERE REGEXP_LIKE(address, #{address}) "
 			+ "ORDER BY fno ASC)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
-	public List<FoodVO> FoodFindData(Map map);
+	public List<FoodVO> foodFindData(Map map);
 	
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food "
 			+ "WHERE REGEXP_LIKE(address, #{address})")

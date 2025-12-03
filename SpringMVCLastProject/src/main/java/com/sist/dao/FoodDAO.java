@@ -23,13 +23,13 @@ public class FoodDAO {
 				+ "FROM (SELECT fno, name, poster "
 				+ "FROM menupan_food ORDER BY fno ASC)) "
 				+ "WHERE num BETWEEN #{start} AND #{end}")
-		public List<FoodVO> FoodListData(@Param("start") int start, @Param("end") int end);
+		public List<FoodVO> foodListData(@Param("start") int start, @Param("end") int end);
 		
 		@Select("SELECT CEIL(COUNT(*)/12.0) FROM menupan_food")
 		public int foodTotalPage();
 	 */
-	public List<FoodVO> FoodListData(int start, int end) {
-		return mapper.FoodListData(start, end);
+	public List<FoodVO> foodListData(int start, int end) {
+		return mapper.foodListData(start, end);
 	}
 	
 	public int foodTotalPage() {
@@ -70,8 +70,8 @@ public class FoodDAO {
 				+ "WHERE REGEXP_LIKE(address, #{address})")
 		public int foodFindTotalPage(String address);
 	 */
-	public List<FoodVO> FoodFindData(Map map) {
-		return mapper.FoodFindData(map);
+	public List<FoodVO> foodFindData(Map map) {
+		return mapper.foodFindData(map);
 	}
 	
 	public int foodFindTotalPage(String address) {

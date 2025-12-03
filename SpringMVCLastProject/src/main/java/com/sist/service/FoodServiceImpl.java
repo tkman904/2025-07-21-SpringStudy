@@ -14,9 +14,9 @@ public class FoodServiceImpl implements FoodService {
 	private FoodDAO fDao;
 	
 	@Override
-	public List<FoodVO> FoodListData(int start, int end) {
+	public List<FoodVO> foodListData(int start, int end) {
 		// TODO Auto-generated method stub
-		return fDao.FoodListData(start, end);
+		return fDao.foodListData(start, end);
 	}
 
 	@Override
@@ -38,9 +38,9 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public List<FoodVO> FoodFindData(Map map) {
+	public List<FoodVO> foodFindData(Map map) {
 		// TODO Auto-generated method stub
-		return fDao.FoodFindData(map);
+		return fDao.foodFindData(map);
 	}
 
 	@Override
