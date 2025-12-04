@@ -14,6 +14,10 @@
 h3 {
 	text-align: center;
 }
+
+.a-link {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -37,16 +41,16 @@ h3 {
         </tr>
         <tr v-for="vo in list">
           <td width="10%" class="text-center">{{vo.no}}</td>
-          <td width="45%">{{vo.subject}}</td>
+          <td width="45%"><a :href="'../board/detail.do?no='+vo.no">{{vo.subject}}</a></td>
           <td width="15%" class="text-center">{{vo.name}}</td>
           <td width="20%" class="text-center">{{vo.dbday}}</td>
           <td width="10%" class="text-center">{{vo.hit}}</td>
         </tr>
         <tr>
           <td colspan="5" class="text-center">
-            <a href="#" class="btn btn-sm btn-danger">이전</a>
+            <a class="btn btn-sm btn-danger a-link" @click="prev()">이전</a>
               {{curpage}} page / {{totalpage}} pages
-            <a href="#" class="btn btn-sm btn-danger">다음</a>
+            <a class="btn btn-sm btn-danger a-link" @click="next()">다음</a>
           </td>
         </tr>
       </table>
@@ -84,6 +88,14 @@ h3 {
 					this.curpage = response.data.curpage
 					this.totalpage = response.data.totalpage
 				})
+			},
+			prev() {
+				this.curpage = this.curpage>1 ? this.curpage-1 : this.curpage
+				this.dataRecv()
+			},
+			next() {
+				this.curpage = this.curpage<this.totalpage ? this.curpage+1 : this.curpage
+				this.dataRecv()
 			}
 		}
 	})

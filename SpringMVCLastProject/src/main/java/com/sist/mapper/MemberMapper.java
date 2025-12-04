@@ -1,0 +1,12 @@
+package com.sist.mapper;
+
+import org.apache.ibatis.annotations.Insert;
+
+import com.sist.vo.MemberVO;
+
+public interface MemberMapper {
+	@Insert("INSERT INTO springMember VALUES("
+			+ "#{userid}, #{userpwd}, #{username}, #{sex}, 1, 'ROLE_MEMBER')")
+	//														   ROLE_ADMIN
+	public void memberInsert(MemberVO vo); 
+}
